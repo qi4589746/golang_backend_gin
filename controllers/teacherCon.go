@@ -13,13 +13,12 @@ func CreateTeacher(c *gin.Context) {
 	Name := c.Request.FormValue("name")
 	Gender := c.Request.FormValue("gender")
 	Subject := c.Request.FormValue("subject")
-	teacher := models.Teacher{
+	teacher := &models.Teacher{
 		ID:      ID,
 		Name:    Name,
 		Gender:  Gender,
 		Subject: Subject,
 	}
-
 	result, err := respositories.CreateTeacher(teacher)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, err.Error())
